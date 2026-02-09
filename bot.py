@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 # Evento cuando el bot se conecta
 @bot.event
 async def on_ready():
-    print(f"Bot conectado como {bot.user}")
+    print(f"Bot conectado como {bot.u
 
 # Comando simple: !hola
 @bot.command()
