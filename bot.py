@@ -7,14 +7,15 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 # Prefijo para comandos
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Evento cuando el bot se conecta
 @bot.event
 async def on_ready():
-    print(f"Estoy conectado como {bot.user}")
+    mensaje = f"Estoy conectado como {bot.user}"
+    print(mensaje)
 
-# Comando simple: !hola
+# Comando hola
 @bot.command()
 async def hola(ctx):
     await ctx.send("¡Hola! ¿Cómo estás?")
@@ -24,12 +25,9 @@ async def hola(ctx):
 async def on_message(message):
     if message.author == bot.user:
         return
-
     if bot.user.mentioned_in(message):
-        await message.channel.send("¿Me has llamado? Aquí estoy.")
-
+        await message.channel.send("¡Me has llamado? Aquí estoy :)")
     await bot.process_commands(message)
 
-# Iniciar bot con el TOKEN de Render
+# Iniciar el bot con el TOKEN de Render
 bot.run(os.getenv("TOKEN"))
-
